@@ -89,10 +89,6 @@ WSGI_APPLICATION = 'recharge_panel.wsgi.application'
 
 
 
-SOCIAL_AUTH_GOOGLE_PLUS_KEY = '170990704387-s1mkibugdkrs9luvuro87v4oobqhn7kk.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_PLUS_SECRET = 'WHeMiUQdSQAcAEQBlqedgNTE'
-
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 

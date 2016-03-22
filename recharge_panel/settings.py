@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn'
     # 'recharge_panel_app',
     #  'social.apps.django_app.default',
 )
@@ -139,3 +140,22 @@ STATICFILES_DIRS = (
     os.path.join("/var/www/", 'reports'),
     os.path.join("/home/aawaz/", 'sounds'),
 )
+
+####### Pay yu payment integration information###################
+
+
+
+
+
+PAYU_INFO = {
+              'merchant_key': "test merchant key",
+
+             'merchant_salt': "test merchant salt",
+             # for production environment use 'https://secure.payu.in/_payment'
+             'payment_url': 'https://test.payu.in/_payment',
+             'surl':'http://example.com/pay-success/',
+             'furl':'http://example.com/failure/',
+             'curl':'http://example.com/cancel/',
+            }
+
+###################End payment info ###############################

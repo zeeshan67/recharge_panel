@@ -5,12 +5,15 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
 <title>Easy Recharge a  Business Corporate Category Flat Bootstrap Responsive Website Template | Payment :: w3layouts</title>
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+{#<link href="css/bootstrap.css" rel="stylesheet">#}
+{#<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />#}
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27,8 +30,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- js -->
 <!--animate-->
-<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-<script src="js/wow.min.js"></script>
+<link href="{% static "css/animate.css" %}" rel="stylesheet" type="text/css" media="all">
+<script src="{% static "js/wow.min.js" %}"></script>
 	<script>
 		 new WOW().init();
 	</script>
@@ -123,7 +126,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="dropdown profile_details_drop">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<div class="profile_img">	
-										<span style="background:url(images/1.png) no-repeat center"> </span> 
+										<span style="background:url(images/1.png) no-repeat center"> </span>
 										 <div class="user-name">
 											<p>Your Profile</p>
 										 </div>
@@ -134,8 +137,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</a>
 								<ul class="dropdown-menu drp-mnu">
 									<li> <a href="#" data-toggle="modal" data-target="#myModal6"> Edit</a> </li> 
-									<li> <a href="settings.html"> View Profile</a> </li>
-									<li> <a href="orders.html">Your orders</a> </li>
+									<li> <a href="{% static "settings.html" %}"> View Profile</a> </li>
+									<li> <a href="{% static "orders.html" %}">Your orders</a> </li>
 																		
 									<li> <a href="#" data-toggle="modal" data-target="#myModal4"> Logout</a> </li>
 								</ul>
@@ -196,8 +199,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="resp-tab-item" aria-controls="tab_item-0" role="tab">Debit Card</li>
 							<li class="resp-tab-item" aria-controls="tab_item-1" role="tab">Credit Card</li>
 							<li class="resp-tab-item" aria-controls="tab_item-2" role="tab">Net Banking</li>
-							<li class="resp-tab-item" aria-controls="tab_item-3" role="tab">ATM</li>
-							<li class="resp-tab-item" aria-controls="tab_item-4" role="tab">IMPS</li>
+							<li class="resp-tab-item" aria-controls="tab_item-2" role="tab">PayPal</li>
+{#							<li class="resp-tab-item" aria-controls="tab_item-3" role="tab">ATM</li>#}
+{#							<li class="resp-tab-item" aria-controls="tab_item-4" role="tab">IMPS</li>#}
 						</ul>
 					</div>
 					<div class="col-md-9 pay-right">

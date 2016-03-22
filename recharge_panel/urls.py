@@ -22,6 +22,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='view.index'),
+    url(r'^payments/', views.payments, name='view.payments'),
     url(r'^recharge_view_plan/', views.view_plan, name='view.view_plan'),
     #   url(r'', include('social.apps')),
     #   url(r'^$', TemplateView.as_view(template_name="login.html")),

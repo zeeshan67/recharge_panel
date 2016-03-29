@@ -6,7 +6,13 @@ from uuid import uuid4
 from uuid import UUID
 import uuid
 from django_extensions.db.fields import UUIDField
+from django.contrib.auth.models import User
+from django.db import models
+from oauth2client import client
 
+
+class FlowModel(models.Model):
+    id = models.ForeignKey(User, primary_key=True)
 
 class MyOrder(models.Model):
     items = models.ManyToManyField(OrderItem, null=True, blank=True)

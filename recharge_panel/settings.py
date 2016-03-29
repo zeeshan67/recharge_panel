@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/login-error/'
-
+SESSION_SERIALIZER= 'django.contrib.sessions.serializers.PickleSerializer'
 # Application definition
 
 INSTALLED_APPS = (
@@ -40,10 +40,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'paypal.standard.ipn'
+    'paypal.standard.ipn',
+    'social_auth'
     # 'recharge_panel_app',
     #  'social.apps.django_app.default',
 )
+
+GOOGLE_OAUTH2_CLIENT_ID = '806064339042-948obeaqs7iu0o2imq3756i49ibn6nlm.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'PqGLuzGO-WiNywg92NvyqSJj'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -53,18 +57,16 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    # 'social.apps.django_app.context_processors.backends',
-    # 'social.apps.django_app.context_processors.login_redirect',
+    # 'django.middleware.security.SecurityMiddleware',
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
     'recharge_panel.Acl.Acl'
-
 )
 
-# AUTHENTICATION_BACKENDS = (
-#
-#    'social.backends.google.GoogleOAuth2',
-#    'django.contrib.auth.backends.ModelBackend',
-# )
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',)
 
 ROOT_URLCONF = 'recharge_panel.urls'
 
@@ -76,6 +78,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'social_auth.context_processors.social_auth_by_type_backends',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

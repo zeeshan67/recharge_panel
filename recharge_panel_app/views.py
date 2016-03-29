@@ -49,7 +49,7 @@ def buy_order(request):
         except ObjectDoesNotExist:
             extra = "You dont have any item in your cart"
             variables = RequestContext(request, {'extra': extra})
-            return render_to_response('home.html', variables)
+            return render('home.html', variables)
             total_amount = OrderItem.objects.filter(buyer=request.user)
             item_list = []
             rg = request.POST.get

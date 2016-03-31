@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 import hashlib
 from django.conf import settings
 from .util import generate_hash
+import models
 # Create your views here.
 
 
@@ -19,6 +20,7 @@ def index(request):
     template = loader.get_template('commons/index.html')
     return HttpResponse(template.render(context_data))
 
+
 def view_plan(request):
     context_data = RequestContext(request,
                                   {'body_template': 'campaign/create_campaign.html',"aUrl":"/recharge_view_plan",
@@ -26,6 +28,7 @@ def view_plan(request):
                                    })
     template = loader.get_template('commons/single.html')
     return HttpResponse(template.render(context_data))
+
 
 def payments(request):
     context_data = RequestContext(request,
@@ -36,7 +39,6 @@ def payments(request):
     return HttpResponse(template.render(context_data))
 
 @login_required
-
 def buy_order(request):
     """ funtion for save all orders and genarate order id"""
     items = None

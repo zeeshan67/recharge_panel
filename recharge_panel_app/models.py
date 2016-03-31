@@ -11,13 +11,10 @@ from django.db import models
 from oauth2client import client
 
 
-class FlowModel(models.Model):
-    id = models.ForeignKey(User, primary_key=True)
-
 class MyOrder(models.Model):
-    items = models.ManyToManyField(OrderItem, null=True, blank=True)
-    order_date = models.DateField(auto_now=True)
-    buyer = models.ForeignKey(Buyer)
+    # items = models.ManyToManyField(OrderItem, null=True, blank=True)
+    # order_date = models.DateField(auto_now=True)
+    # buyer = models.ForeignKey(Buyer)
 
     txnid = models.CharField(max_length=36, primary_key=True)
     amount = models.FloatField(null=True, blank=True,default=0.0)
@@ -46,3 +43,12 @@ class MyOrder(models.Model):
     is_paid = models.BooleanField(default=False)
     is_delivered = models.BooleanField(default=False)
     is_accepted = models.BooleanField(default=False)
+
+
+class UserMaster(models.Model):
+    user_name = models.CharField(max_length=500, null=False, blank=False)
+    gender = models.CharField(max_length=6, null=False, blank=False)
+    mobile_number = models.CharField(max_length=10)
+    age = models.CharField(max_length=3)
+    def get_user(self):
+        return self.user_name

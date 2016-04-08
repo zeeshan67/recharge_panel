@@ -40,9 +40,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
-    'paypal.standard.ipn',
-    'social_auth'
     # 'recharge_panel_app',
     #  'social.apps.django_app.default',
 )
@@ -59,14 +56,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'django.middleware.security.SecurityMiddleware',
-    'social_auth.backends.google.GoogleOAuth2Backend',
+    # 'social_auth.backends.google.GoogleOAuth2Backend',
     'django.contrib.auth.backends.ModelBackend',
     'recharge_panel.Acl.Acl'
 )
 
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.google.GoogleOAuth2Backend',
-    'social_auth.backends.facebook.FacebookBackend',
+    # 'social_auth.backends.google.GoogleOAuth2Backend',
+    # 'social_auth.backends.facebook.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',)
 
 ROOT_URLCONF = 'recharge_panel.urls'
@@ -79,7 +76,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'social_auth.context_processors.social_auth_by_type_backends',
+                # 'social_auth.context_processors.social_auth_by_type_backends',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

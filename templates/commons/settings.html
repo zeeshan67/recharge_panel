@@ -386,21 +386,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 																<li><a href="#">Uninor</a></li>
 															</ul>
 															<div class="section_room">
-																<select id="country" onchange="change_country(this.value)" class="frm-field required">
-																	<option value="null">Airtel</option>
-																	<option value="null">Aircel</option>         
-																	<option value="AX">Bsnl</option>
-																	<option value="AX">Idea</option>
-																	<option value="AX">Tata Docomo</option>
-																	<option value="AX">Reliance</option>
-																	<option value="AX">Tata Indicom</option>
-																	<option value="AX">Uninor</option>
-																	<option value="AX">Vodafone</option>
-																	<option value="AX">MTS</option>
+																<select id="operator" onchange="change_country(this.value)" class="frm-field required">
+																	<option value="airtel">Airtel</option>
+																	<option value="aircel">Aircel</option>
+																	<option value="bsnl">Bsnl</option>
+																	<option value="idea">Idea</option>
+																	<option value="tata">Tata Docomo</option>
+																	<option value="reliance">Reliance</option>
+																	<option value="tata_indicom">Tata Indicom</option>
+																	<option value="uninor">Uninor</option>
+																	<option value="vodafone">Vodafone</option>
+																	<option value="mts">MTS</option>
 																</select>
 															</div>	
 														</div>
-														
 													</div>
 													<ul class="list-inline pull-right">
 														<li><button type="button" class="mob-btn btn btn-default prev-step">Previous</button></li>
@@ -418,24 +417,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 																<img src="images/map.png" alt="" />
 															</div>
 															<div class="section_room">
-																<select id="country" onchange="change_country(this.value)" class="frm-field required">
-																	<option value="null">Andhra Pradesh</option>
-																	<option value="null">Assam</option>         
-																	<option value="AX">Bihar</option>
-																	<option value="AX">Chennai</option>
-																	<option value="AX">Delhi</option>
-																	<option value="AX">Gujarat</option>
-																	<option value="AX">Haryana </option>
-																	<option value="AX">Himachal Pradesh</option>
-																	<option value="AX">Karnataka</option>
-																	<option value="AX">Madhya Pradesh</option>
-																	<option value="AX">Mumbai</option>
-																	<option value="AX">Tamil Nadu</option>
-																	<option value="AX">Uttar Pradesh</option>
+																<select id="state" onchange="change_country(this.value)" class="frm-field required">
+																	<option value="andhra_pradesh">Andhra Pradesh</option>
+																	<option value="assam">Assam</option>
+																	<option value="bihar">Bihar</option>
+																	<option value="chennai">Chennai</option>
+																	<option value="delhi">Delhi</option>
+																	<option value="gujarat">Gujarat</option>
+																	<option value="haryana">Haryana</option>
+																	<option value="himachal_pradesh">Himachal Pradesh</option>
+																	<option value="karnataka">Karnataka</option>
+																	<option value="madhya_pradesh">Madhya Pradesh</option>
+																	<option value="mumbai">Mumbai</option>
+																	<option value="tamil_nadu">Tamil Nadu</option>
+																	<option value="uttar_pradesh">Uttar Pradesh</option>
 																</select>
 															</div>	
 														</div>
-														
 													</div>
 													<ul class="list-inline pull-right">
 														<li><button type="button" class="mob-btn btn btn-default prev-step">Previous</button></li>
@@ -460,8 +458,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													</div>
 													<ul class="list-inline pull-right">
 														<li><button type="button" class="mob-btn btn btn-default prev-step">Previous</button></li>
-														<li><button type="button" class="mob-btn btn btn-primary btn-info-full" data-dismiss="modal">Finish</button></li>
+														<li><button type="button" class="mob-btn btn btn-primary btn-info-full finish-data" data-dismiss="modal">Finish Mobile</button></li>
 													</ul>
+                                                    <script>
+                                                        document.ready(function(){
+                                                            $('.finish-data').onclick(function(){
+                                                                    $.post(function{
+                                                                    type: 'POST'
+                                                                    url: "someaction.do?action=saveData",
+                                                                    data: {
+
+                                                                    },
+                                                                    dataType: "application/JSON",
+                                                                    success: function(resultData) {
+                                                                        alert("Save Complete")
+                                                                     }
+                                                                })
+                                                            })
+                                                        })
+                                                    </script>
 												</div>	
 												<div class="clearfix"></div>
 											</div>
@@ -519,7 +534,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<div class="mobile-right ">
 															<h4>Pay your DTH bill. Which operator?</h4>
 															<div class="section_room">
-																<select id="country" onchange="change_country(this.value)" class="frm-field required">
+																<select id="dth_operator" onchange="change_country(this.value)" class="frm-field required">
 																	<option value="null">Select DTH Operator</option>
 																	<option value="null">Dish TV</option>  
 																	<option value="null">Sun Direct</option> 

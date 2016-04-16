@@ -1,0 +1,344 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{{ tname }}</title>
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    <link href="{% static "/css/font-awesome.css" %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static "css/animate.css" %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static "css/admin.css" %}" rel="stylesheet" type="text/css"/>
+    <style>
+        .login_content {
+            width: 500px;
+            margin: 50px auto 0;
+        }
+    </style>
+    <script src="{% static "js/jquery-2.1.0.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+</head>
+<body class="light_theme  fixed_header left_nav_fixed">
+<div class="wrapper">
+
+    <div class="login_page">
+        <div class="login_content">
+            <div class="panel-heading border login_heading">Welcome to Aawaz</div>
+            <div id="content_remove">
+                <div class="panel-danger hidden">
+                    <div class="alert alert-danger fade in">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        <p id="error_msg"></p>
+                    </div>
+                </div>
+                <div style="padding-bottom:10px ">
+                    Please enter the details provided below
+                </div>
+
+
+                <div>
+                    <form action="/verification" method="POST" class="form-horizontal" role="form" id="frm">
+
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ user_id }}" id="hdnUserId" name="hdnUserId">
+
+                        <div class="form-group" id="frmgrp_pwd">
+                            <label for="campaign_name" class="col-sm-4 control-label">Password</label>
+
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control"
+                                       id="pwd" name="pwd" placeholder="6 - 15 Characters" value=''>
+                                <span id="err_pwd" class="hidden pull-left text-danger" style="font-size:10px "></span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="frmgrp_conpwd">
+                            <label class="col-sm-4 control-label">Confirm Password</label>
+
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control"
+                                       id="conpwd" name="conpwd" placeholder="6 - 15 Characters" value=''>
+                                <span id="err_conpwd" class="hidden pull-left text-danger"
+                                      style="font-size:10px "></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group" id="frmgrp_coname">
+                            <label class="col-sm-4 control-label">Company Name</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"
+                                       id="co_name" name="co_name" placeholder="" value=''>
+                                <span id="err_co_name" class="hidden pull-left text-danger"
+                                      style="font-size:10px "></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group" id="frmgrp_addr">
+                            <label for="campaign_name" class="col-sm-4 control-label">Address</label>
+
+                            <div class="col-sm-8">
+                                <textarea rows="4" class="form-control"
+                                          id="addr" name="addr" placeholder="" value=''></textarea>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group" id="frmgrp_pincode">
+                            <label for="campaign_name" class="col-sm-4 control-label">Pincode</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"
+                                       id="pincode" name="pincode" placeholder="" value=''>
+                                <span id="err_pincode" class="hidden pull-left text-danger"
+                                      style="font-size:10px "></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group" id="frmgrp_city">
+                            <label for="campaign_name" class="col-sm-4 control-label">City</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"
+                                       id="city" name="city" placeholder="" value=''>
+                                <span id="err_city" class="hidden pull-left text-danger" style="font-size:10px "></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group" id="frmgrp_state">
+                            <label class="col-sm-4 control-label">State</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"
+                                       id="state" name="state" placeholder="" value=''>
+                                <span id="err_state" class="hidden pull-left text-danger"
+                                      style="font-size:10px "></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group" id="frmgrp_country">
+                            <label class="col-sm-4 control-label">Country</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control"
+                                       id="country" name="country" placeholder="" value=''>
+                                <span id="err_country" class="hidden pull-left text-danger"
+                                      style="font-size:10px "></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-10">
+                                <input class="btn btn-primary mb10" id='btnSubmit' type="button" value="Submit"
+                                       style="width:80px;">
+                                <button type="reset" class="btn btn-default">Clear</button>
+                            </div>
+                        </div>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function () {
+    chk = false;
+    pwd = '';
+    status = '{{ status }}';
+    msg = '{{ msg | safe }}';
+    if (status == '') {
+        $('#error_msg').html('');
+        $(".panel-danger").addClass('hidden');
+    }
+    else if (status == 'false') {
+
+        $('#error_msg').html(msg);
+        $(".panel-danger").removeClass('hidden');
+        $('.alert').addClass('alert-danger');
+        $('.alert').removeClass('hidden');
+        $('.alert').removeClass('alert-success');
+    }
+    else if (status == 'true') {
+        $('#content_remove').html(msg);
+    }
+    else {
+        $('#error_msg').html('');
+        $(".panel-danger").addClass('hidden');
+    }
+
+    $('#pwd').blur(function () {
+        pwd = $.trim($('#pwd').val());
+        if (pwd == '') {
+            $('#frmgrp_pwd').addClass('has-error');
+            $('#err_pwd').html('*Password is mandatory');
+            $('#err_pwd').removeClass('hidden');
+            chk = false;
+        }
+        else {
+            if (pwd.length < 6) {
+                $('#frmgrp_pwd').addClass('has-error');
+                $('#err_pwd').html('*password length should be more than 6');
+                $('#err_pwd').removeClass('hidden');
+                chk = false;
+            }
+            else {
+                $('#frmgrp_pwd').removeClass('has-error');
+                $('#err_pwd').html('');
+                $('#err_pwd').addClass('hidden');
+                chk = true;
+            }
+        }
+    });
+
+    $('#conpwd').blur(function () {
+        conpwd = $.trim($('#conpwd').val());
+        if (conpwd == '') {
+            $('#frmgrp_conpwd').addClass('has-error');
+            $('#err_conpwd').html('*Confirm password is mandatory');
+            $('#err_conpwd').removeClass('hidden');
+            chk = false;
+        }
+        else {
+            if (conpwd != pwd) {
+                chk = false;
+                $('#frmgrp_conpwd').addClass('has-error');
+                $('#err_conpwd').html('Password and confirm password are not same. try again');
+                $('#err_conpwd').removeClass('hidden');
+                $('#pwd').clear();
+                $('#pwd').focus();
+
+            }
+            else {
+                $('#frmgrp_conpwd').removeClass('has-error');
+                $('#err_conpwd').html('');
+                $('#err_conpwd').addClass('hidden');
+                chk = true;
+            }
+        }
+    });
+
+    $('#pincode').blur(function () {
+        pincode = $.trim($('#pincode').val());
+        var filter = /^[0-9]+$/;
+        if (pincode != '') {
+            if (filter.test(pincode)) {
+                $('#frmgrp_pincode').removeClass('has-error');
+                $('#err_pincode').html('');
+                $('#err_pincode').addClass('hidden');
+                chk = true;
+            }
+            else {
+                $('#frmgrp_pincode').addClass('has-error');
+                $('#err_pincode').html('Invalid Pincode');
+                $('#err_pincode').removeClass('hidden');
+                chk = false;
+            }
+        }
+        else {
+            $('#frmgrp_pincode').removeClass('has-error');
+            $('#err_pincode').html('');
+            $('#err_pincode').addClass('hidden');
+            chk = true;
+        }
+    });
+
+    $('#city').blur(function () {
+        city = $.trim($('#city').val());
+        if (city == '') {
+            $('#frmgrp_city').removeClass('has-error');
+            $('#err_city').html('');
+            $('#err_city').addClass('hidden');
+            chk = true;
+        }
+        else {
+            var alpha_pattern = /^[A-z]+$/
+            if (alpha_pattern.test(city)) {
+                $('#frmgrp_city').removeClass('has-error');
+                $('#err_city').html('');
+                $('#err_city').addClass('hidden');
+                chk = true;
+            }
+            else {
+                $('#frmgrp_city').addClass('has-error');
+                $('#err_city').html('Invalid value for city');
+                $('#err_city').removeClass('hidden');
+                chk = false;
+            }
+        }
+    });
+
+    $('#state').blur(function () {
+        state = $.trim($('#state').val());
+        if (state == '') {
+            $('#frmgrp_state').removeClass('has-error');
+            $('#err_state').html('');
+            $('#err_state').addClass('hidden');
+            chk = true;
+        }
+        else {
+            var alpha_pattern = /^[A-z]+$/
+            if (alpha_pattern.test(state)) {
+                $('#frmgrp_state').removeClass('has-error');
+                $('#err_state').html('');
+                $('#err_state').addClass('hidden');
+                chk = true;
+            }
+            else {
+                $('#frmgrp_state').addClass('has-error');
+                $('#err_state').html('Invalid value for state');
+                $('#err_state').removeClass('hidden');
+                chk = false;
+            }
+        }
+    });
+
+    $('#country').blur(function () {
+        country = $.trim($('#country').val());
+        if (country == '') {
+            $('#frmgrp_country').removeClass('has-error');
+            $('#err_country').html('');
+            $('#err_country').addClass('hidden');
+            chk = true;
+        }
+        else {
+            var alpha_pattern = /^[A-z]+$/
+            if (alpha_pattern.test(country)) {
+                $('#frmgrp_country').removeClass('has-error');
+                $('#err_country').html('');
+                $('#err_country').addClass('hidden');
+                chk = true;
+            }
+            else {
+                $('#frmgrp_country').addClass('has-error');
+                $('#err_country').html('Invalid value for country');
+                $('#err_country').removeClass('hidden');
+                chk = false;
+            }
+        }
+    });
+
+    $('#btnSubmit').click(function () {
+
+        if (chk == true) {
+            $('#frm').submit();
+        }
+        else {
+            $('#error_msg').html('Form submission requires valid data');
+            $(".panel-danger").removeClass('hidden');
+            $('.alert').removeClass('hidden');
+            $('.alert').addClass('alert-danger');
+            $('.alert').removeClass('alert-success');
+        }
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="479236083">
+    <data-source source="LOCAL" name="Django default" uuid="6c42c924-73de-4363-8206-7d95c03071f6">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/webozind_recharge_db</jdbc-url>
+      <user-name>webozind_karan</user-name>
+      <user-password>dfc1dfcbdfd8dfcbdfc4dff5df99df98df9b</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

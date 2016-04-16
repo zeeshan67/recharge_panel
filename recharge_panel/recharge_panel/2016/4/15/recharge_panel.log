@@ -1,0 +1,42 @@
+2016-04-15 15:42:10,357->[WARNI]-> Error login.html
+2016-04-15 15:42:10,376->[ERROR]-> ErrorTraceback (most recent call last):
+  File "/home/verna/PycharmProjects/recharge_panel/recharge_panel_app/views.py", line 67, in login
+    return render(request,'login.html')
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 46, in get_template
+    raise TemplateDoesNotExist(template_name)
+TemplateDoesNotExist: login.html
+
+2016-04-15 15:45:20,889->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:45:20,889->[DEBUG]-> Post Request for User admin
+2016-04-15 15:45:27,160->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:45:27,161->[DEBUG]-> Post Request for User admin
+2016-04-15 15:45:39,036->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:45:39,036->[DEBUG]-> Post Request for User admin
+2016-04-15 15:46:50,476->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:46:50,477->[DEBUG]-> Post Request for User admin
+2016-04-15 15:46:55,968->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:46:55,968->[DEBUG]-> Post Request for User admin
+2016-04-15 15:47:05,456->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:47:05,457->[DEBUG]-> Post Request for User admin
+2016-04-15 15:47:38,005->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:47:38,006->[DEBUG]-> Post Request for User admin
+2016-04-15 15:56:43,855->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:56:43,855->[DEBUG]-> Post Request for User admin
+2016-04-15 15:59:04,758->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:59:04,759->[DEBUG]-> Post Request for User DelhiGovt_Bihar
+2016-04-15 15:59:12,954->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:59:12,954->[DEBUG]-> Post Request for User adsdasd
+2016-04-15 15:59:47,382->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:59:47,382->[DEBUG]-> Post Request for User adsdasd
+2016-04-15 15:59:54,602->[DEBUG]-> Post Request localhost:3000
+2016-04-15 15:59:54,602->[DEBUG]-> Post Request for User 676
+2016-04-15 16:00:00,419->[DEBUG]-> Post Request localhost:3000
+2016-04-15 16:00:00,419->[DEBUG]-> Post Request for User fsdfsdfsfd
+2016-04-15 16:04:52,800->[DEBUG]-> Post Request localhost:3000
+2016-04-15 16:04:52,801->[DEBUG]-> Post Request for User fsdfsdfsfd
+2016-04-15 16:04:59,774->[DEBUG]-> Post Request localhost:3000
+2016-04-15 16:04:59,774->[DEBUG]-> Post Request for User admin

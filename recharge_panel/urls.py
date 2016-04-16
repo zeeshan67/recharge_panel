@@ -21,9 +21,13 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.index, name='view.index'),
+    url(r'^$', views.login, name='view.login'),
+    url(r'^login/$', views.login, name='view.login'),
+    url(r'^logout/$', views.logout, name='view.logout'),
+    url(r'^logout/login', views.login, name='view.login'),
+    # url(r'^/login/registration',views.registration,name='view.registration'),
     url(r'^payments/', views.payments, name='view.payments'),
-    url(r'^recharge_view_plan/', views.view_plan, name='view.view_plan'),
+    # url(r'^recharge_view_plan/', views.view_plan, name='view.view_plan'),
     # url(r'', include('social_auth.urls')),
     #   url(r'^$', TemplateView.as_view(template_name="login.html")),
 ]

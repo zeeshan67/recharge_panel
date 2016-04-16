@@ -30,6 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- js -->
 								<script>
 									$(document).ready(function () {
+									    alert('ready');
 										//Initialize tooltips
 										$('.nav-tabs > li a[title]').tooltip();
 										
@@ -56,7 +57,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											prevTab($active);
 
 										});
-									});
+										$(".finish-data").click(function(){
+                                            alert('Oncliked');
+                                        });
 
 									function nextTab(elem) {
 										$(elem).next().find('a[data-toggle="tab"]').click();
@@ -370,16 +373,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 															</ul>
 															<div class="section_room">
 																<select id="operator" onchange="change_country(this.value)" class="frm-field required">
-																	<option value="airtel">Airtel</option>
-																	<option value="aircel">Aircel</option>
-																	<option value="bsnl">Bsnl</option>
-																	<option value="idea">Idea</option>
-																	<option value="tata">Tata Docomo</option>
-																	<option value="reliance">Reliance</option>
-																	<option value="tata_indicom">Tata Indicom</option>
-																	<option value="uninor">Uninor</option>
-																	<option value="vodafone">Vodafone</option>
-																	<option value="mts">MTS</option>
+																	<option value="86">Airtel Landline</option>
+																	<option value="35">Airtel Postpaid</option>
+																	<option value="1">Airtel</option>
+																	<option value="94">Aircel Postpaid</option>
+																	<option value="11">Aircel</option>
+																	<option value="59">BSNL LAND LINE</option>
+																	<option value="36">BSNL Postpaid</option>
+																	<option value="84">BSNL CDMA</option>
+																	<option value="2">BSNL</option>
+																	<option value="4">Idea</option>
+																	<option value="13">Tata Docomo</option>
+																	<option value="29">Reliance CDMA</option>
+																	<option value="3">Reliance GSM</option>
+																	<option value="63">Tata Indicom</option>
+																	<option value="12">Uninor</option>
+																	<option value="5">Vodafone</option>
+																	<option value="16">MTS</option>
 																</select>
 															</div>	
 														</div>
@@ -401,7 +411,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 																<img src="{% static "images/map.png" %}" alt="" />
 															</div>
 															<div class="section_room">
-																<select id="country" onchange="change_country(this.value)" class="frm-field required">
+																<select id="country_mobile" onchange="change_country(this.value)" class="frm-field required">
 																	<option value="andhra_pradesh">Andhra Pradesh</option>
 																	<option value="assam">Assam</option>
 																	<option value="bihar">Bihar</option>
@@ -445,24 +455,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<li><button type="button" class="mob-btn btn btn-default prev-step">Previous</button></li>
 														<li><button type="button" class="mob-btn btn btn-primary btn-info-full finish-data" data-dismiss="modal">Finish Mobile</button></li>
 													</ul>
-													<script>
-                                                        $(document).ready(function(){
-                                                            $('.finish-data').onclick(function(){
-                                                            		alert('Oncliked');
-                                                                    $.post(function{
-                                                                    type: 'POST'
-                                                                    url: "someaction.do?action=saveData",
-                                                                    data: {
-
-                                                                    },
-                                                                    dataType: "application/JSON",
-                                                                    success: function(resultData) {
-                                                                        alert("Save Complete")
-                                                                     }
-                                                                })
-                                                            })
-                                                        })
-                                                    </script>
 												</div>	
 												<div class="clearfix"></div>
 											</div>

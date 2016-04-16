@@ -59,6 +59,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										});
 										$(".finish-data").click(function(){
                                             alert('Oncliked');
+                                            $.ajax({
+                                                url: "{{ '/mis_request_download/' }}",
+                                                data: { 'from_date': fromdatedetails, 'to_date': todatedetails},
+                                                type: 'post',
+                                                dataType: 'json',
+                                                async: true,
+                                                success: function (data) {
+                                                    if(null != data['filepath']){
+                                                         var url = "{{ '/' }}csv_report/";
+                                                         console.log(data['filepath']);
+                                                        var new_window = window.open(url+data['filepath'], '_blank');
+
+                                                        new_window.focus();
+                                //                         window.location = url+data['filepath'];
+                                                    }
+                                                    else{
+                                                        alert('Download Report Failed! Kindly try again Later!');
+                                                    }
+                                                }
+                                            })
                                         });
 
 									function nextTab(elem) {
@@ -67,6 +87,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									function prevTab(elem) {
 										$(elem).prev().find('a[data-toggle="tab"]').click();
 									}
+                                });
 								</script>
 </head>
 <body>

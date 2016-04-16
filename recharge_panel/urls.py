@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^logout/login', views.login, name='view.login'),
     # url(r'^/login/registration',views.registration,name='view.registration'),
     url(r'^payments/', views.payments, name='view.payments'),
+    url(r'^initiate_recharge/', views.initiate_recharge, name='view.initiate_recharge'),
     # url(r'^recharge_view_plan/', views.view_plan, name='view.view_plan'),
     # url(r'', include('social_auth.urls')),
     #   url(r'^$', TemplateView.as_view(template_name="login.html")),

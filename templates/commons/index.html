@@ -58,19 +58,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 										});
 										$(".finish-data").click(function(){
-                                            alert('Oncliked',$('#mobile_no').val(),$( "#opreator option:selected" ).text(),
+                                            alert('Oncliked'+$('#mobile_no').val(),$( "#opreator option:selected" ).text(),
                                             $('#recharge_value').val(),$( "#circle_mobile option:selected" ).text());
-                                            console.log($('#mobile_no').val(),$( "#operator option:selected" ).text(),
-                                            $('#recharge_value').val(),$( "#circle_mobile option:selected" ).text(),'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
+                                            console.log($('#mobile_no').val(),$( "#operator option:selected" ).val(),
+                                            $('#recharge_value').val(),$( "#circle_mobile option:selected" ).val(),'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
                                             $.ajax({
                                                 url: "/initiate_recharge",
                                                 data: {
                                                         'username':'admin',
                                                         'user_id':'1',
                                                         'mobile_no': $('#mobile_no').val(),
-                                                        'operator_code': $( "#operator option:selected" ).text(),
+                                                        'operator_code': $( "#operator option:selected" ).val(),
                                                         'amount': $('#recharge_value').val(),
-                                                        'circle': $( "#circle_mobile option:selected" ).text()
+                                                        'circle': $( "#circle_mobile option:selected" ).val()
                                                         },
                                                 type: 'post',
                                                 dataType: 'json',

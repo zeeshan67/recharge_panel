@@ -61,12 +61,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             alert('Oncliked');
                                             $.ajax({
                                                 url: "{{ '/mis_request_download/' }}",
-                                                data: { 'username':admin,
+                                                data: {
+                                                        'username':admin,
                                                         'user_id':'1',
                                                         'mobile_no': $('#mobile_no').val(),
-                                                        'operator_code': $( "#opreator option:selected" ).text();
+                                                        'operator_code': $( "#opreator option:selected" ).text(),
                                                         'amount': $('#recharge_val').val(),
-                                                        'circle': $( "#circle_mobile option:selected" ).text();,
+                                                        'circle': $( "#circle_mobile option:selected" ).text()
                                                         },
                                                 type: 'post',
                                                 dataType: 'json',

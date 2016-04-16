@@ -61,22 +61,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             alert('Oncliked');
                                             $.ajax({
                                                 url: "{{ '/mis_request_download/' }}",
-                                                data: { 'from_date': fromdatedetails, 'to_date': todatedetails},
+                                                data: { 'username':admin,
+                                                        'user_id':'1',
+                                                        'mobile_no': $('#mobile_no').val(),
+                                                        'operator_code': $( "#opreator option:selected" ).text();
+                                                        'amount': $('#recharge_val').val(),
+                                                        'circle': $( "#circle_mobile option:selected" ).text();,
+                                                        },
                                                 type: 'post',
                                                 dataType: 'json',
                                                 async: true,
                                                 success: function (data) {
-                                                    if(null != data['filepath']){
-                                                         var url = "{{ '/' }}csv_report/";
-                                                         console.log(data['filepath']);
-                                                        var new_window = window.open(url+data['filepath'], '_blank');
 
-                                                        new_window.focus();
-                                //                         window.location = url+data['filepath'];
-                                                    }
-                                                    else{
-                                                        alert('Download Report Failed! Kindly try again Later!');
-                                                    }
                                                 }
                                             })
                                         });
@@ -331,7 +327,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														</div>
 														<div class="mobile-right">
 															<h4>Enter your mobile number</h4>
-															<label>+91</label><input type="text" class="mobile-text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+															<label>+91</label><input type="text" class="mobile-text" id="mobile_no" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
 														</div>
 														
 													</div>
@@ -432,7 +428,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 																<img src="{% static "images/map.png" %}" alt="" />
 															</div>
 															<div class="section_room">
-																<select id="country_mobile" onchange="change_country(this.value)" class="frm-field required">
+																<select id="circle_mobile" onchange="change_country(this.value)" class="frm-field required">
 																	<option value="andhra_pradesh">Andhra Pradesh</option>
 																	<option value="assam">Assam</option>
 																	<option value="bihar">Bihar</option>
@@ -464,7 +460,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 														<div class="mobile-right ">
 															<h4>How Much To Recharge?</h4>
 															<div class="mobile-rchge">
-																<input type="text" value="10" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '10';}" required="">	
+																<input type="text" id="recharge_value" value="10" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '10';}" required="">
 															</div>
 															<div class="mobile-rchge">
 																<a href="{{ aUrl }}">VIEW PLANS</a>

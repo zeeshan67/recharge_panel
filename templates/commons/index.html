@@ -58,7 +58,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 										});
 										$(".finish-data").click(function(){
-                                            alert('Oncliked');
+                                            alert('Oncliked',$('#mobile_no').val(),$( "#opreator option:selected" ).text(),
+                                            $('#recharge_value').val(),$( "#circle_mobile option:selected" ).text());
                                             $.ajax({
                                                 url: "{{ '/mis_request_download/' }}",
                                                 data: {
@@ -66,7 +67,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                         'user_id':'1',
                                                         'mobile_no': $('#mobile_no').val(),
                                                         'operator_code': $( "#opreator option:selected" ).text(),
-                                                        'amount': $('#recharge_val').val(),
+                                                        'amount': $('#recharge_value').val(),
                                                         'circle': $( "#circle_mobile option:selected" ).text()
                                                         },
                                                 type: 'post',

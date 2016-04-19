@@ -98,10 +98,11 @@ def initiate_recharge(request):
                                    'session_data': request.session, "success": "false", "error": "error",
                                    })
 
+
     if (request.session.__contains__('username')) and request.method == 'POST':
         request.session['role'] = 'user'
 
-        post_url = "http://localhost:8003/api/user_recharge/"
+        post_url = "http://localhost:8003/api/user_recharge"
         post_params = {
                        "username":request.POST.get('username'),
                        "user_id":request.POST.get('user_id'),
@@ -110,12 +111,15 @@ def initiate_recharge(request):
                        "circle":request.POST.get('circle'),
                        "amount":request.POST.get('amount')
                        }
+        print post_params
         response = requests.post(post_url,json=post_params)
         context_data.update({'recharge_status': response.text()})
         template = loader.get_template('commons/index.html')
     else:
         template = loader.get_template('commons/login.html')
     return HttpResponse(template.render(context_data))
+
+
 
 
 def payments(request):
